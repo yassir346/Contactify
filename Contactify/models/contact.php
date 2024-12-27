@@ -1,7 +1,7 @@
 <?php
 class Contact {
     private $conn;
-    private $table = 'contacts';
+    private $table = 'contact';
 
     public $id;
     public $nom;
@@ -14,7 +14,7 @@ class Contact {
     }
 
     public function create() {
-        $query = "INSERT INTO " . $this->table . " (nom, prénom, email, téléphone) VALUES (:nom, :prenom, :email, :telephone)";
+        $query = "INSERT INTO " . $this->table . " (nom, prenom, email, telephone) VALUES (:nom, :prenom, :email, :telephone)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':nom', $this->nom);
         $stmt->bindParam(':prenom', $this->prenom);
@@ -31,7 +31,7 @@ class Contact {
     }
 
     public function update() {
-        $query = "UPDATE " . $this->table . " SET nom = :nom, prénom = :prenom, email = :email, téléphone = :telephone WHERE id = :id";
+        $query = "UPDATE " . $this->table . " SET nom = :nom, prenom = :prenom, email = :email, telephone = :telephone WHERE id = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':nom', $this->nom);
         $stmt->bindParam(':prenom', $this->prenom);
